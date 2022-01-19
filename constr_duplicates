@@ -1,0 +1,13 @@
+with t1 as (
+	SELECT * 
+	FROM public.constr 
+	NATURAL INNER JOIN public.constrinfo 
+	NATURAL INNER JOIN public.entity)
+					
+SELECT
+    constrtype, identity, COUNT(*) AS CountOf
+    FROM t1
+    GROUP BY constrtype, identity
+    HAVING COUNT(*)>1
+	
+	
