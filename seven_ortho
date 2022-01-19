@@ -1,0 +1,9 @@
+select o.idobject
+from public.object o
+join objtype ot on o.objtype = ot.idobjtype
+join constrinfo ci on o.idobject = ci.identity
+join constr co on co.idconstraint = ci.idconstraint
+join constrtype ct on co.constrtype = ct.idconstrtype
+where ot.name = 'Segment' and ct.name = 'Ortho'
+group by o.idobject
+having count(*) = 7
